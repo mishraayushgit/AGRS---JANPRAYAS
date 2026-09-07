@@ -1,4 +1,4 @@
-# Jan Prayas (AGRS) — National AI Multimodal Grievance Redressal System
+# Jan Prayas (AGRS) — AI Multimodal Grievance Redressal System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
