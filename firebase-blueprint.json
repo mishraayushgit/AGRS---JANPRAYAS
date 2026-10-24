@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Represents an authenticated citizen, municipal officer, or system administrator profile",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique authentication identifier from Firebase Auth"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full legal name or display name of the user",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "username": {
+          "type": "string",
+          "description": "System unique handle or username",
+          "minLength": 3,
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "description": "Electronic mail address"
+        },
+        "role": {
+          "type": "string",
+          "description": "System access role",
+          "enum": ["citizen", "officer", "admin"]
+        },
+        "ward": {
+          "type": "string",
+          "description": "Municipal ward jurisdiction or residence"
+        },
+        "department": {
+          "type": "string",
+          "description": "Assigned administrative department for officers"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Authentication provider (password, google.com, microsoft.com, apple.com)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of account creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of profile update"
+        }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "GrievanceRecord": {
+      "title": "GrievanceRecord",
+      "description": "Represents an AI-triaged civic complaint docket",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique docket tracking identifier (e.g. AGRS-2026-001)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Brief headline of the civic issue",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "Full description or transcribed voice petition"
+        },
+        "category": {
+          "type": "string",
+          "description": "Civic sector category"
+        },
+        "department": {
+          "type": "string",
+          "description": "Assigned municipal department"
+        },
+        "ward": {
+          "type": "string",
+          "description": "Municipal ward location"
+        },
+        "urgency_score": {
+          "type": "number",
+          "description": "AI calculated priority score between 0.0 and 1.0"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current resolution status",
+          "enum": ["New", "In Progress", "Resolved", "Escalated", "Rejected"]
+        },
+        "reporter_name": {
+          "type": "string",
+          "description": "Name of citizen petitioner"
+        },
+        "reporter_uid": {
+          "type": "string",
+          "description": "UID of the citizen if authenticated"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp when filed"
+        }
+      },
+      "required": ["id", "title", "description", "category", "department", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user profiles stored by UID"
+    },
+    "/grievances/{grievanceId}": {
+      "schema": "GrievanceRecord",
+      "description": "Civic grievances and redressal records"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Jan Prayas",
+  "description": "Jan Prayas (AGRS) - Asynchronous multimodal grievance redressal system integrating Whisper ASR, PaddleOCR, and TrOCR for voice and handwritten inputs, with zero-shot Indic NLP for automated categorization, department routing, and urgency scoring.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
